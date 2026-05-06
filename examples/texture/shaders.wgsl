@@ -4,7 +4,6 @@ struct VertexOut {
 }
 
 struct MyUniform {
-  offset: f32,
   gridSize: f32
 }
 
@@ -16,8 +15,8 @@ struct MyUniform {
 {
   var output : VertexOut;
   output.position = vec4f(
-    (position.x / myUniform.gridSize - 0.5) * 2 + cos(myUniform.offset + position.y) * 0.02,
-    (position.y / myUniform.gridSize - 0.5) * 2 + sin(myUniform.offset + position.x) * 0.02,
+    (position.x / myUniform.gridSize - 0.5) * 2,
+    (position.y / myUniform.gridSize - 0.5) * 2,
     position.z,
     position.w
   );

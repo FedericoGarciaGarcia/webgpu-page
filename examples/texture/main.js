@@ -1,4 +1,4 @@
-const gridSize = 10;
+const gridSize = 4;
 
 const triangles = [];
 for (let y = 0; y < gridSize; y++) {
@@ -42,9 +42,8 @@ const vertexBuffers = [
 
 const triCount = triangles.length;
 
-// "offset" is a 32bit float (4 bytes)
 // "gridSize" is a 32 bit float (4 bytes)
-const uniformBufferSize = 4 * 2;
+const uniformBufferSize = 4;
 
 const textureSrc = 'examples/texture/crate.png';
 
@@ -57,13 +56,7 @@ const {render, uniformValues} = await Renderer({
   textureSrc
 });
 
-const kOffsetOffset = 0;
-const uniformOffsetView = new Float32Array(
-  uniformValues,
-  kOffsetOffset,
-  1
-);
-const kGridSizeOffset = 4;
+const kGridSizeOffset = 0;
 const uniformGridSizeView = new Float32Array(
   uniformValues,
   kGridSizeOffset,
@@ -80,7 +73,6 @@ function loop() {
     i -= 360.0;
   }
 
-  uniformOffsetView[0] = i;
   render();
 
   requestAnimationFrame(loop);
