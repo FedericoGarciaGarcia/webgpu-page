@@ -64,4 +64,9 @@ const uniformGridSizeView = new Float32Array(
 );
 uniformGridSizeView[0] = gridSize;
 
-render();
+function loop() {
+  render();
+  requestAnimationFrame(loop);
+}
+
+loop();
